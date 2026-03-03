@@ -1,0 +1,234 @@
+i believe its a new dawn new begining its a new run book  howp you have gon through the previous code see how good it its and its architecture 
+(C:\Users\Mark Castro\Documents\CHEF_NOVARTIS)  analyze the scripts weel we go na use the architecture 
+
+now weare getting started on a new runnbook(D:\Projects\SIMBA-RUNBOOKS\UKDMOGI_PART_2\project information\UKDMOGI_Runbook - RUNBOOK (1).csv)(D:\Projects\SIMBA-RUNBOOKS\UKDMOGI_PART_2\project information\UKDMOGI_Runbook (1).xlsx)
+HERE IS THE MANUALY SCRAPED DATA FROM 2024-2022 REPORT (D:\Projects\SIMBA-RUNBOOKS\UKDMOGI_DATA_PART_1\project information\UKDMOGI_DATA_PART_1_20251023 - DATA_PART_1.csv) and 
+Meta (D:\Projects\SIMBA-RUNBOOKS\UKDMOGI_PART_2\project information\UKDMOGI_META_PART_2_20250610 - META_PART_2.csv)
+
+analyze them first before we started so our code will be similar to the other one
+thistime we will  have the config.py  add the necessary collumns mapinng since the sub headers and headers in the manual data will be exactly the way they are to every output and in the exact arrangemen 
+(D:\Projects\SIMBA-RUNBOOKS\UKDMOGI_PART_2\project information\UKDMOGI_DATA_PART_2_20251023.xlsx - Sheet1.csv)
+
+seconndly lets move on to the to the scraper.py arcording to the runbook we are supposed to visit this urls and in a specific order(Need to save data from each link below:	
+
+1. Go to link:
+https://www.dmo.gov.uk/data/pdfdatareport?reportCode=D5D
+
+
+ once the site loads it will look like thiths (D:\Projects\SIMBA-RUNBOOKS\UKDMOGI_PART_2\project information\image5.png) as you can see thers is a cookie banar overlay on the site on the left side 
+ this will give you a clear picture (<div id="ccc" role="region" aria-label="Cookie Preferences" aria-live="polite" style="z-index: 2147483647;"><div id="ccc-overlay"></div><div id="ccc-module" class="ccc-module--slideout ccc-module--left" role="dialog"><div id="ccc-content" class="ccc-content--light  "><button id="ccc-close" class="ccc-link ccc-tabbable " tabindex="0" aria-label="Close Cookie Control"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><title>Cookie Control Close Icon</title><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg></button><div id="cc-panel" class="ccc-panel "><h2 id="ccc-title">We use necessary cookies to make our site work. We would also like to set optional analytics cookies to help us improve it. We won't set optional cookies unless you enable them. Using this tool will set a cookie on your device to remember your preferences. 
+ For more detailed information about the cookies we use, see our  <a href="/terms-of-use/cookie-policy/">Cookie Policy</a>. </h2><p class="ccc-intro">Some of these cookies are essential, while others help us to improve your experience by providing insights into how the site is being used.</p><div id="ccc-button-holder"><button id="ccc-recommended-settings" class="ccc-notify-button ccc-button-solid ccc-tabbable ccc-accept-button"><span>Accept Recommended Settings</span></button><button id="ccc-reject-settings" class="ccc-notify-button ccc-link ccc-tabbable ccc-reject-button"><span>I Do Not Accept</span></button></div><hr aria-hidden="true"><h3 id="ccc-necessary-title">Necessary Cookies</h3><p id="ccc-necessary-description">Necessary cookies enable core functionality such as security, network management, and accessibility. You may disable these by changing your browser settings, but this may affect how the website functions.</p><hr aria-hidden="true"><div id="ccc-optional-categories"><div class="optional-cookie" aria-live="polite"><h3 class="optional-cookie-header">Analytics</h3><p>We'd like to set Google Analytics cookies to help us to improve our website by collecting and reporting information on how you use it. For more information on how these cookies work please see our <a href="/terms-of-use/cookie-policy/">Cookie Policy</a>. The cookies collect information in an anonymous form.</p><div class="checkbox-toggle checkbox-toggle--slider checkbox-toggle--light ccc-tabbable"><label class="checkbox-toggle-label"><input class="checkbox-toggle-input" type="checkbox"><span class="checkbox-toggle-text ccc-sr-only">Analytics</span><span class="checkbox-toggle-on" aria-hidden="true">On</span><span class="checkbox-toggle-off" aria-hidden="true">Off</span><span class="checkbox-toggle-toggle"></span></label></div><hr aria-hidden="true"></div></div><div id="ccc-info" class="ccc-info"><a id="ccc-info-link" class="ccc-link ccc-tabbable" href="https://www.civicuk.com/cookie-control" target="_blank" rel="noopener">About this tool<span class="ccc-svg-element"><span class="ccc-sr-only ">(Opens in a new window)</span><svg xmlns="http://www.w3.org/2000/svg" data-icon="external-link" viewBox="0 0 32 40" x="0px" y="0px"><title>Cookie Control Link Icon</title><path d="M32 0l-8 1 2.438 2.438-9.5 9.5-1.063 1.063 2.125 2.125 1.063-1.063 9.5-9.5 2.438 2.438 1-8zm-30 3c-.483 0-1.047.172-1.438.563-.391.391-.563.954-.563 1.438v25c0 .483.172 1.047.563 1.438.391.391.954.563 1.438.563h25c.483 0 1.047-.172 1.438-.563.391-.391.563-.954.563-1.438v-15h-3v14h-23v-23h15v-3h-16z"></path></svg></span></a></div></div></div></div><button id="ccc-icon" class="ccc-icon--left ccc-icon--light " aria-label="Set cookie preferences" accesskey="c" width="80" height="80" style="width: 80px; height: 80px;"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 72.5 72.5" enable-background="new 0 0 72.5 72.5"><title>Cookie Control Icon</title><g id="triangle"><path d="M0,0l72.5,72.5H0V0z"></path></g><g id="star"><path d="M33.2,51.9l-3.9-2.6l1.6-4.4l-4.7,0.2L25,40.6l-3.7,2.9l-3.7-2.9l-1.2,4.5l-4.7-0.2l1.6,4.4l-3.9,2.6l3.9,2.6l-1.6,4.4l4.7-0.2l1.2,4.5l3.7-2.9l3.7,2.9l1.2-4.5l4.7,0.2l-1.6-4.4L33.2,51.9z M24.6,55.3c-0.3,0.4-0.8,0.8-1.3,1s-1.1,0.3-1.9,0.3c-0.9,0-1.7-0.1-2.3-0.4s-1.1-0.7-1.5-1.4c-0.4-0.7-0.6-1.6-0.6-2.6c0-1.4,0.4-2.5,1.1-3.3c0.8-0.8,1.8-1.1,3.2-1.1c1.1,0,1.9,0.2,2.6,0.7s1.1,1.1,1.4,2L23,50.9c-0.1-0.3-0.2-0.5-0.3-0.6c-0.1-0.2-0.3-0.4-0.5-0.5s-0.5-0.2-0.7-0.2c-0.6,0-1.1,0.2-1.4,0.7c-0.2,0.4-0.4,0.9-0.4,1.7c0,1,0.1,1.6,0.4,2c0.3,0.4,0.7,0.5,1.2,0.5c0.5,0,0.9-0.1,1.2-0.4s0.4-0.7,0.6-1.2l2.3,0.7C25.2,54.3,25,54.8,24.6,55.3z"></path></g></svg></button></div>)
+ we are supposed to click accept recommended setings button (<div id="ccc-button-holder"><button id="ccc-recommended-settings" class="ccc-notify-button ccc-button-solid ccc-tabbable ccc-accept-button"><span>Accept Recommended Settings</span></button><button id="ccc-reject-settings" class="ccc-notify-button ccc-link ccc-tabbable ccc-reject-button"><span>I Do Not Accept</span></button></div>)
+ here is the sample of the html site (D:\Projects\SIMBA-RUNBOOKS\UKDMOGI_PART_2\sample.txt)after it loads 
+ we are going to click the excell file button(<div class="row">
+        <div class="col-xs-12 col-md-3">
+            
+    <nav id="nav-left">
+        <ul class="nav nav-pills nav-stacked">
+                <li class="collapse-heading  ">
+                    <a href="/data/gilt-market/">Gilt Market</a>
+                        <a role="button" href="#17087" class="data-toggle collapsed" aria-label="Toggle Gilt Market" data-toggle="collapse" data-target="#17087" aria-expanded="false">
+                            <span role="presentation" class="icon icon-plus">
+                                <span class="to-read">Toggle Gilt Market button collapsed</span>
+                            </span>
+                            <span role="presentation" class="icon icon-minus">
+                                <span class="to-read">Toggle Gilt Market button expanded</span>
+                            </span>
+                        </a>
+                        <ul class="collapse" id="17087" aria-expanded="false">
+                            <li class="collapse-heading  ">
+                                <a class="" href="/data/gilt-market/results-of-gilt-operations/">Results of Gilt Operations</a>
+                                
+
+                            </li>
+                            <li class="collapse-heading  ">
+                                <a class="" href="/data/gilt-market/historical-prices-and-yields/">Historical Prices and Yields</a>
+                                
+
+                            </li>
+                            <li class="collapse-heading  ">
+                                <a class="" href="/data/gilt-market/gilts-in-issue/">Gilts in Issue</a>
+                                
+
+                            </li>
+                            <li class="collapse-heading  ">
+                                <a class="" href="/data/gilt-market/index-linked-gilts/">Index-linked Gilts</a>
+                                
+
+                            </li>
+                            <li class="collapse-heading  ">
+                                <a class="" href="/data/gilt-market/government-holdings/">Government Holdings</a>
+                                
+
+                            </li>
+                            <li class="collapse-heading  ">
+                                <a class="" href="/data/gilt-market/turnover-data/">Turnover Data</a>
+                                
+
+                            </li>
+                            <li class="collapse-heading  ">
+                                <a class="" href="/data/gilt-market/gross-and-net-issuance-data/">Gross and Net Issuance Data</a>
+                                
+
+                            </li>
+                            <li class="collapse-heading  ">
+                                <a class="" href="/data/gilt-market/aggregated-yields/">Aggregated Yields</a>
+                                
+
+                            </li>
+                            <li class="collapse-heading  ">
+                                <a class="" href="/data/gilt-market/average-gilt-issuance-yields/">Average Gilt Issuance Yields</a>
+                                
+
+                            </li>
+                        </ul>
+                </li>
+                <li class="collapse-heading  ">
+                    <a href="/data/treasury-bills/">Treasury Bills</a>
+                        <a role="button" href="#17120" class="data-toggle collapsed" aria-label="Toggle Treasury Bills" data-toggle="collapse" data-target="#17120" aria-expanded="false">
+                            <span role="presentation" class="icon icon-plus">
+                                <span class="to-read">Toggle Treasury Bills button collapsed</span>
+                            </span>
+                            <span role="presentation" class="icon icon-minus">
+                                <span class="to-read">Toggle Treasury Bills button expanded</span>
+                            </span>
+                        </a>
+                        <ul class="collapse" id="17120" aria-expanded="false">
+                            <li class="collapse-heading  ">
+                                <a class="" href="/data/treasury-bills/tender-results/">Tender Results</a>
+                                
+
+                            </li>
+                            <li class="collapse-heading  ">
+                                <a class="" href="/data/treasury-bills/prices-and-yields/">Prices and Yields</a>
+                                
+
+                            </li>
+                            <li class="collapse-heading  ">
+                                <a class="" href="/data/treasury-bills/treasury-bill-issuance-and-stock/">Treasury Bill Issuance and Stock</a>
+                                
+
+                            </li>
+                            <li class="collapse-heading  ">
+                                <a class="" href="/data/treasury-bills/treasury-bills-outstanding/">Treasury Bills Outstanding</a>
+                                
+
+                            </li>
+                        </ul>
+                </li>
+        </ul>
+    </nav>
+
+        </div>
+
+        <div class="col-xs-12 col-md-9">
+            
+
+
+    <script defer="" src="/dist/scripts/reports/DataReport.js"></script>
+    <script defer="" src="/dist/scripts/reports/ExportData.js"></script>
+    <script defer="" src="/dist/scripts/reports/ExportDataReport.js"></script>
+    <script>
+        var exportreportdata = {
+  "ReportCode": "D1C",
+  "ReportInformation": {
+    "code": "D1C",
+    "reportSourceId": 2,
+    "reportTypeId": 3,
+    "landscape": false,
+    "zoomFactor": 100,
+    "exportTypes": [
+      {
+        "Id": 1,
+        "Name": "Excel",
+        "ExtensionName": "xls"
+      },
+      {
+        "Id": 2,
+        "Name": "Word",
+        "ExtensionName": "doc"
+      }
+    ],
+    "name": "Redemption Details of Redeemed Gilts",
+    "description": "This report is retrospective and shows the final amount outstanding of each gilt redeemed to date, along with its redemption date.  Data on all gilt redemptions since 1981 are available.",
+    "extendedDescription": null,
+    "footnote1": "For double-dated gilts the redemption date recorded here is the actual day on which each bond was redeemed.",
+    "footnote2": "This report is updated whenever a gilt redeems.",
+    "footnote3": null,
+    "footnote4": null,
+    "footnote5": null,
+    "footnote6": null
+  },
+  "ReportParameters": null,
+  "FooterList": [
+    "For double-dated gilts the redemption date recorded here is the actual day on which each bond was redeemed.",
+    "This report is updated whenever a gilt redeems."
+  ],
+  "ErrorMessage": null,
+  "Result": null,
+  "Name": null,
+  "Filename": null,
+  "ContentType": null,
+  "ResultMessage": null
+};
+    </script>
+            <div class="notice-block show" id="notice_box">
+                <div class="notice-toggle pull-right" data-toggle="notice-block" data-target="#notice_box">
+                    <span role="presentation" class="icon-plus"></span>
+                    <span role="presentation" class="icon-minus"></span>
+                </div>
+                <div class="notice-block-title">
+                    <h2>Report Overview</h2>
+                </div>
+                <div class="notice-block-body">
+                    This report is retrospective and shows the final amount outstanding of each gilt redeemed to date, along with its redemption date.  Data on all gilt redemptions since 1981 are available.
+                </div>
+            </div>
+        <div>
+            <div class="report-terms">
+    Use of these data assumes compliance with the DMO's <a class="link" href="https://www.dmo.gov.uk/terms-of-use/">terms of use</a>
+</div>
+
+    <br>
+    <br>
+    <input type="hidden" id="exportFormatName" value="exportFormat">
+    <div class="button-block">
+        <div class="block-label"><b>Export options</b></div>
+            <button type="button" class="btn btn-secondary" onclick="GenerateDownloadDataReport('xls')">Excel</button>
+            <button type="button" class="btn btn-secondary" onclick="GenerateDownloadDataReport('doc')">Word</button>
+    </div>
+
+
+        </div>
+        <div>
+            <br>
+
+<div>
+    <row>
+        <strong>Note:</strong>
+                    <div class="col-sm-12 footnotes">
+                        <span>1</span>
+                        <span>For double-dated gilts the redemption date recorded here is the actual day on which each bond was redeemed.</span>
+                    </div>
+                    <div class="col-sm-12 footnotes">
+                        <span>2</span>
+                        <span>This report is updated whenever a gilt redeems.</span>
+                    </div>
+    </row>
+</div>        </div>
+
+        </div>
+    </div>)
+liek this (<div class="button-block">
+        <div class="block-label"><b>Export options</b></div>
+            <button type="button" class="btn btn-secondary" onclick="GenerateDownloadDataReport('xls')">Excel</button>
+            <button type="button" class="btn btn-secondary" onclick="GenerateDownloadDataReport('doc')">Word</button>
+    </div>) to trigger the download of the excell file (3. We need all data from "Nominal amount outstanding at redemption (£ million)" column from the current year.)
+     we click the excel button to trigger  the downloads of the file to save on the created download folder with timestampds sub folders  test the orchestrator with the scrapper.py 
+ when we downlood we will get a file like this (D:\Projects\SIMBA-RUNBOOKS\UKDMOGI_PART_2\project information\20260113 - Redemption Details of Redeemed Gilts.xls)
+ here is a screen shot (D:\Projects\SIMBA-RUNBOOKS\UKDMOGI_PART_2\project information\image2.png)  based on the runbook instructions we are supposed to get (Nominal amount outstanding at redemption (£ million))
+)  like you cansee in the old manualy scrapped data (D:\Projects\SIMBA-RUNBOOKS\UKDMOGI_PART_2\project information\UKDMOGI_DATA_PART_2_20251023.xlsx - Sheet1.csv)
+and the (Operation Date) is important they be  in the required formart just analyze the data you can see what am talking about that will be the job of the parser.py  then the filegenerator will generate the meta file and data file in the output folder with timestanped subfolder for every run  and a latest subfolder too which holds the latest file for every run 
+we test the full pipeling now for
+
+
