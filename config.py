@@ -168,7 +168,7 @@ EXCEL_BUTTON_XPATH = "//button[contains(text(), 'Excel')]"
 EXCEL_BUTTON_ONCLICK = "GenerateDownloadDataReport('xls')"
 
 # Browser Configuration
-HEADLESS_MODE = False  # Set to True for background operation (no browser window)
+HEADLESS_MODE = True  # Set to True for background operation (no browser window)
 ELEMENT_WAIT_TIMEOUT = 20  # seconds
 DOWNLOAD_WAIT_TIMEOUT = 60  # seconds
 
